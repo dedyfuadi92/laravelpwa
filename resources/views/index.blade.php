@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../css/bootstrap.min.css">
     {{-- manifest --}}
     <link rel="manifest" href="manifest.json">
 
