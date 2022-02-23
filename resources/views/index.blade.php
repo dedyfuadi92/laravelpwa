@@ -18,7 +18,7 @@
     <div class="container">
         <header>
             <h1>Laravel PWA</h1>
-            <img src="../public/images/ok-kos.png" alt="" width="150">
+            <img src="../../public/images/ok-kos.png" alt="" width="150">
         </header>
         <hr>
         <main>
