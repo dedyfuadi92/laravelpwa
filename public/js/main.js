@@ -3,7 +3,8 @@ $(document).ready(function () {
     var dataResults = '';
     var catResults = '';
     var categories = [];
-    $.get(_url, function (data) {
+    function renderPage(data) {
+        // $.get(_url, function (data) {
         $.each(data, function (key, items) {
             _cat = items.category;
             dataResults += "<div>"
@@ -17,7 +18,30 @@ $(document).ready(function () {
         });
         $('#products').html(dataResults);
         $('#cat_select').html("<option value='all'>Semua</option>" + catResults);
-    });
+        // });
+    };
+    var networkDataReceived = false;
+
+    // fresh data from online
+    var networkUpdate = fetch(_url).then(function (response) {
+        return response.json()
+    }).then(function (data) {
+        networkDataReceived = true;
+        renderPage(data);
+    })
+    // get return data from cache
+    caches.match(_url).then(function (response) {
+        if (!response) throw Error('no data on cache')
+        return response.json();
+    }).then(function (data) {
+        if (!networkDataReceived) {
+            renderPage(data);
+            console.log('render data from cache');
+        }
+    }).catch(function () {
+        return networkUpdate;
+    })
+
     // fungsi filter
     $("#cat_select").on('change', function () {
         updateProduct($(this).val());

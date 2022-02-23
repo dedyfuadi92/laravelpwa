@@ -1,7 +1,6 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
     '/',
-    '/fallback.json',
     '/css/bootstrap.min.css',
     '/images/ok-kos.png',
     '/js/bootstrap.bundle.min.js',
@@ -22,33 +21,37 @@ self.addEventListener('install', function (event) {
 });
 // fetch-ing data
 self.addEventListener('fetch', function (event) {
-    var request = event.request;
-    var url = new URL(request.url);
-    // pisahkan request api dan internal
-    if (url.origin === location.origin) {
-        event.respondWith(
-            caches.match(request).then(function (response) {
-                return response || fetch(request);
-            })
-        );
-    } else {
-        event.respondWith(
-            caches.open('products-cache').then(function (cache) {
-                return fetch(request).then(function (liveResponse) {
-                    cache.put(request, liveResponse.clone());
-                    return liveResponse;
-                }).catch(function () {
-                    return caches.match(request).then(function (response) {
-                        if (response) {
+    event.respondWith(
+        caches.match(event.request)
+            .then(function (response) {
+                // Cache hit - return response
+                if (response) {
+                    return response;
+                }
+
+                return fetch(event.request).then(
+                    function (response) {
+                        // Check if we received a valid response
+                        if (!response || response.status !== 200 || response.type !== 'basic') {
                             return response;
-                        } else {
-                            return caches.match('/fallback.json');
                         }
-                    })
-                })
+
+                        // IMPORTANT: Clone the response. A response is a stream
+                        // and because we want the browser to consume the response
+                        // as well as the cache consuming the response, we need
+                        // to clone it so we have two streams.
+                        var responseToCache = response.clone();
+
+                        caches.open(CACHE_NAME)
+                            .then(function (cache) {
+                                cache.put(event.request, responseToCache);
+                            });
+
+                        return response;
+                    }
+                );
             })
-        );
-    };
+    );
 });
 // aktivasi
 self.addEventListener('activate', function (event) {
