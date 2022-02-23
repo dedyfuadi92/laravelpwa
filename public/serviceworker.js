@@ -5,6 +5,7 @@ var urlsToCache = [
     '/images/ok-kos.png',
     '/js/bootstrap.bundle.min.js',
     '/js/jquery.min.js',
+    '/js/popper.min.js',
     '/js/main.js'
 ];
 // install sw
