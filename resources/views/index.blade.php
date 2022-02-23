@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     {{-- manifest --}}
     <link rel="manifest" href="manifest.json">
 
@@ -18,7 +18,7 @@
     <div class="container">
         <header>
             <h1>Laravel PWA</h1>
-            <img src="images/ok-kos.png" alt="" width="150">
+            <img src="public/images/ok-kos.png" alt="" width="150">
         </header>
         <hr>
         <main>
