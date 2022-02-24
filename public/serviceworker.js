@@ -1,5 +1,6 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
+    'https://laravelpwa-hvugah1xk-dedyfuadi92-gmailcom.vercel.app/',
     '/',
     '/fallback.json',
     '/css/bootstrap.min.css',
