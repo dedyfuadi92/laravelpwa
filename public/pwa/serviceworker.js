@@ -1,13 +1,13 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-    '../',
-    '../fallback.json',
-    '../css/bootstrap.min.css',
-    '../images/ok-kos.png',
-    '../js/bootstrap.bundle.min.js',
-    '../js/jquery.min.js',
-    '../js/popper.min.js',
-    '../js/main.js'
+    '/',
+    '/pwa/fallback.json',
+    '/css/bootstrap.min.css',
+    '/images/ok-kos.png',
+    '/js/bootstrap.bundle.min.js',
+    '/js/jquery.min.js',
+    '/js/popper.min.js',
+    '/js/main.js'
 ];
 // install sw
 self.addEventListener('install', function (event) {
