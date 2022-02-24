@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     {{-- manifest --}}
-    <link rel="manifest" href="/pwa/manifest.json">
+    <link rel="manifest" href="/manifest.json">
 
     <title>Laravel PWA</title>
 </head>
