@@ -1,7 +1,7 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
     './',
-    '/fallback.json',
+    './fallback.json',
     './css/bootstrap.min.css',
     './images/ok-kos.png',
     './js/bootstrap.bundle.min.js',
